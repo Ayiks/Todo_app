@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/utils.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -7,6 +8,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+       
         leading: const Padding(
           padding: EdgeInsets.only(left: 15),
           child: CircleAvatar(
@@ -38,26 +40,27 @@ class HomeView extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Plan a trip to Finland',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Color.fromRGBO(37, 43, 103, 1)),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'Lorem Ipsum is simply dummy text of the printing,',
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: Colors.grey, fontSize: 16),
-                  )
-                ],
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Plan a trip to Finland',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600, color: customBlue),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'Lorem Ipsum is simply dummy text of the printing, Ipsum is simply dummy text of the printing Ipsum is simply dummy text of the printing Ipsum is simply dummy text of the printing',
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(color: Colors.grey, fontSize: 16),
+                    )
+                  ],
+                ),
               ),
               const SizedBox(
                 width: 15,
@@ -94,7 +97,28 @@ class HomeView extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(15),
               child: Row(
-                children: [Icon(Icons.check_circle_rounded)],
+                
+                children: [
+                  Icon(
+                    Icons.check_circle_rounded,
+                    color: customBlue,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        'Completed',
+                        style: TextStyle(
+                            color: customBlue, fontWeight: FontWeight.w600),
+                      ),
+                      Icon(Icons.keyboard_arrow_down, color: customBlue,),
+                    ],
+                  ),
+                  const Spacer(),
+                  Text('24', style: TextStyle(color: customBlue),)
+                ],
               ),
             ),
           ),
