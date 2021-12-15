@@ -46,7 +46,7 @@ class TodoController {
     }).catchError((onError) {
       isSuccessful = false;
     });
-    return isSuccessful = false;
+    return isSuccessful;
   }
 
   //delete Todo
@@ -64,6 +64,26 @@ class TodoController {
     }).catchError((onError) {
       isDeleted = false;
     });
-    return isDeleted = false;
+    return isDeleted;
+  }
+
+  //update todo
+  Future<bool> updateTodo({required bool status, required String id}) async {
+    bool isUpdated = false;
+    await _todoServices
+        .updateTodoRequest(status: status, id: id)
+        .then((response) {
+      int statusCode = response.statusCode;
+      if (statusCode == 201) {
+        //success
+        isUpdated = true;
+      } else {
+        //failure
+        isUpdated = false;
+      }
+    }).catchError((onError) {
+      isUpdated = false;
+    });
+    return isUpdated;
   }
 }

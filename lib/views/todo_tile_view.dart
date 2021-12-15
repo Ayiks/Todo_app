@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/models/todo.dart';
 
 import '../utils.dart';
 
 class TodoTileView extends StatelessWidget {
   const TodoTileView({
     Key? key,
+    required this.todo,
   }) : super(key: key);
+
+  final Datum todo;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,7 @@ class TodoTileView extends StatelessWidget {
           children: [
             Icon(
               Icons.check_circle_outline,
-              color: Colors.pink,
+              color: dateColor(todo.dateTime),
             ),
             const SizedBox(
               width: 10,
@@ -28,7 +32,7 @@ class TodoTileView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Plan a trip to Finland',
+                    todo.title,
                     style: TextStyle(
                         fontWeight: FontWeight.w600, color: customBlue),
                   ),
@@ -36,7 +40,7 @@ class TodoTileView extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    'Lorem Ipsum is simply dummy text of the printing, Ipsum is simply dummy text of the printing Ipsum is simply dummy text of the printing Ipsum is simply dummy text of the printing',
+                    todo.description,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(color: Colors.grey, fontSize: 16),
@@ -51,11 +55,11 @@ class TodoTileView extends StatelessWidget {
               children: [
                 Icon(
                   Icons.notifications,
-                  color: Colors.pink,
+                  color: dateColor(todo.dateTime),
                 ),
                 Text(
-                  'Yesterday',
-                  style: TextStyle(color: Colors.pink),
+                  todo.dateTime,
+                  style: TextStyle(color: dateColor(todo.dateTime)),
                 )
               ],
             )
